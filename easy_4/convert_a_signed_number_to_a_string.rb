@@ -50,7 +50,6 @@ def integer_to_string(integer, sign)
   integer_array = integer_array.map { |integer| STRINGS[integer] }
   integer_array.unshift(sign)
   string = integer_array.join
-  string
 end
 
 def signed_integer_to_string(integer)

@@ -40,7 +40,6 @@ def integer_to_string(integer)
   integer_array = integer.digits.reverse
   integer_array = integer_array.map{ |integer| STRINGS[integer] }
   string = integer_array.join
-  string
 end
 
 p integer_to_string(4321) == '4321'
