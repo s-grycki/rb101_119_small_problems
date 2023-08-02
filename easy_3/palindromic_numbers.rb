@@ -1,33 +1,42 @@
 =begin
-Problem: Write a method that returns true
-if argument is palindromic, false otherwise.
+  PROBLEM: Return true if the integer given is palindromic, false otherwise
+  Input: Integer
+  Output: Boolean true/false
+  Rules:
+    - 
 
--Input: Integer
--Output: True/false
+  EXAMPLES:
+  palindromic_number?(34543) == true
+  palindromic_number?(123210) == false
+  palindromic_number?(22) == true
+  palindromic_number?(5) == true
 
-Examples:
-palindromic_number?(34543) == true
-palindromic_number?(123210) == false
-palindromic_number?(22) == true
-palindromic_number?(5) == true
+  DATA STRUCTURES:
+    - Array
 
-Data Structures:
-Integer, array
-
-Algorithm:
-GET integer
-SET integer = reversed array -> spaceless string -> integer
-IF integer = integer reversed
-  RETURN TRUE
-ELSE
-  RETURN FALSE
-END IF
-
-Code:
+  ALGORITHM:
+    - Create a duplicate of integer
+    - Put integer inside array collection
+    - Reverse each integer
+    - Iterate over each integer element with index
+      - If reverse array element == array element
+        - Continue
+      - Else
+        - Return false
+    - Return true
 =end
 
 def palindromic_number?(int)
   int.digits.join.to_i == int
+end
+
+def palindromic_number?(int)
+  reversed_array = int.digits
+  array = reversed_array.reverse
+  array.each_with_index do |int, idx|
+    return false if int != reversed_array[idx]
+  end
+  true
 end
 
 p palindromic_number?(34543) == true

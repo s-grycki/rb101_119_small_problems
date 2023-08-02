@@ -1,29 +1,32 @@
 =begin
-  P: Problem
-		Write a method that takes two arguments, a string and a positive integer, 
-		and prints the string as many times as the integer indicates.
+PROBLEM: Take two arguments, a string and a positive integer, and print the string integer times
+  - Input: String, Integer
+  - Output: String (integer times)
+  - Rules:
+    - Integer implied positive
 
-		-Input: String, Integer
-		-Output: String (integer) times
-		
-		E: Examples
-		Input: repeat('Hello', 3)
-		Output: Hello
-          Hello
-          Hello
+EXAMPLES:
+  - repeat('Hello', 3)
+  Hello
+  Hello
+  Hello
 
-  D: Data Structures
-		-String
+DATA STRUCTURE:
 
-		A: Algorithm
-		- GET the string and integer input
-		- PRINT string integer times
+ALGORITHM:
+  - initialize counter variable
+  - Iterate integer number of times
+    - print string for each iteration
+    - counter += 1
 
-		C: Code
 =end
 
-def repeat(string, integer)
-  integer.times {puts string}
+def repeat(string, int)
+  counter = 0
+  until counter == int
+    counter += 1
+    puts string
+  end
 end
 
 repeat('Hello', 3)

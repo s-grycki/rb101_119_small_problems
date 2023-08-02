@@ -1,42 +1,34 @@
 =begin
-P: Problem
-Write a method that takes one integer argument, which may be positive, negative, or zero.
-This method returns true if the number's absolute value is odd.
-You may assume that the argument is a valid integer value.
+PROBLEM: Return true if number's absolute value is odd
+  - Input: Integer
+  - Output: Boolean based on if integer is odd
+  - Rules:
+    - Input can be positive, negative, or zero
+    - Absolute value means evaluation must be done on positive integer
+    - Don't use #odd?/#even?
 
--Input: Integer
--Output: Boolean
+EXAMPLES:
+  puts is_odd?(2)    # => false
+  puts is_odd?(5)    # => true
+  puts is_odd?(-17)  # => true
+  puts is_odd?(-8)   # => false
+  puts is_odd?(0)    # => false
+  puts is_odd?(7)    # => true  
 
--Rules
--Not allowed to use #odd? or #even? methods
+DATA STRUCTURE:
 
-E: Examples
-puts is_odd?(2)    # => false
-puts is_odd?(5)    # => true
-puts is_odd?(-17)  # => true
-puts is_odd?(-8)   # => false
-puts is_odd?(0)    # => false
-puts is_odd?(7)    # => true
+ALGORITHM:
+  - Set integer to absolute value equivalent
+  - If integer is odd
+    - return true
+  - If integer is even
+    - return false
 
-D: Data Structure
--Integer
-
-A: Algorithm
-GET integer value
-IF integer % 2 == 0
-  FALSE
-ELSE
-  TRUE
-END IF
-
-C: Code
 =end
 
 def is_odd?(int)
-  int % 2 != 0
+  int.abs.remainder(2) != 0
 end
-
-
 
 puts is_odd?(2)    # => false
 puts is_odd?(5)    # => true

@@ -1,40 +1,30 @@
 =begin
-Problem: Prompt the user for two positive integers.
-Print the results of the following operations on the two inputs:
-Addition, subtraction, product, quotient, remainder, and power.
-Do not worry about input validation.
+  PROBLEM: Prompt user for two positive integers. Print the following 6
+  operations on them
+  Input: Two integers
+  Output: 6 calculations from input
+  Rules:
+    - Don't worry about validating input
 
--Input: Two integers
--Output: 6 operations on two integers
+  EXAMPLES:
+  ==> Enter the first number:
+  23
+  ==> Enter the second number:
+  17
+  ==> 23 + 17 = 40
+  ==> 23 - 17 = 6
+  ==> 23 * 17 = 391
+  ==> 23 / 17 = 1
+  ==> 23 % 17 = 6
+  ==> 23 ** 17 = 141050039560662968926103
 
--Example:
-==> Enter the first number:
-23
-==> Enter the second number:
-17
-==> 23 + 17 = 40
-==> 23 - 17 = 6
-==> 23 * 17 = 391
-==> 23 / 17 = 1
-==> 23 % 17 = 6
-==> 23 ** 17 = 141050039560662968926103
+  DATA STRUCTURES:
+  Array
 
-Data Structures:
-Integers
-
-Algorithm:
-PRINT enter first number
-num1 = gets.chomp.to_i
-PRINT enter second number
-num2 = gets.chomp.to_i
-PRINT int1 + int2 = ___
-PRINT int1 - int2 = ___
-PRINT int1 * int2 = ___
-PRINT int1 / int2 = ___
-PRINT int1 % int2 = ___
-PRINT int1 ** int2 = ___
-
-Code:
+  ALGORITHM:
+    - Get two integers from user
+    - Iterate 6 times
+      - Print the result of each operation
 =end
 
 def prompt(input)
@@ -52,3 +42,24 @@ int2 = values('second')
 %i[+ - * / % **].each do |op|
   prompt("#{int1} #{op} #{int2} = #{[int1, int2].inject(op)}")
 end
+
+
+
+
+
+def print_results(num_array)
+  [:+, :-, :*, :/, :%, :**].each do |op|
+    puts "==> #{num_array.first} #{op} #{num_array.last} = " + 
+    "#{num_array.inject(op)}"
+  end
+end
+
+def get_numbers
+  %w(first second).each_with_object([]) do |time, arr|
+    puts "==> Enter the #{time} number:"
+    arr << gets.chomp.to_i.abs
+  end
+end
+
+num_array = get_numbers
+print_results(num_array)

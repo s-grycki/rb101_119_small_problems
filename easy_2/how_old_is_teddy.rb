@@ -1,38 +1,23 @@
 =begin
-Problem: Build a program that randomly generates user age.
-Ask the user for a name. If none is supplied, then use Teddy.
-To get the age, generate a random number between 20 - 200
+PROBLEM: Rnadomly generate a number 20..200 to represent Teddy's age and print out how old he is
+  - Input: Random integer 20..200
+  - Output: String of how old Teddy is
+  - Rules:
+    - 
 
--Input: A random number (20-200)
--Output: (name) is _ years old!
-
--Example:
+EXAMPLES:
 Teddy is 69 years old!
 
--Data Structures:
-String, Integer
+DATA STRUCTURE:
 
--Algorithm:
-GET name
-GET integer 20-200
-IF name is empty
-  name = 'Teddy'
-END IF
-PRINT message
-
-Code:
+ALGORITHM:
+  - Generate an integer between 20..200
+  - Iterpolate this into a string
 =end
 
-def message(name, int)
-  name = 'Teddy' if name.empty?
-  puts "#{name} is #{int} years old!"
+def print_age(name = 'Teddy')
+  puts "#{name} is #{Array(20..200).sample} years old!"
 end
 
-def your_name
-  puts 'Please enter a name: '
-  gets.chomp
-end
-
-name = your_name
-int = rand(20..200)
-message(name, int)
+print_age
+print_age('Shawn')

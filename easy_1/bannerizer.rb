@@ -1,15 +1,11 @@
 =begin
-Problem: Write a method that will take a short line of text, and print it within a box.
--Input: String
--Output: String inside text box
+PROBLEM: Print a short line of text within a box
+  - Input: String
+  - Output: String inside of box
+  - Rules:
+    - Box should fit size of string
 
--Rules:
--Box has one line of padding top/bottom
--Box has one space of padding right/left
--Text is in box center
-
-Examples:
-
+EXAMPLES:
 print_in_box('To boldly go where no one has gone before.')
 +--------------------------------------------+
 |                                            |
@@ -24,38 +20,32 @@ print_in_box('')
 |  |
 +--+
 
-Data Structures:
--String
+DATA STRUCTURE:
 
-Algorithm:
--GET string
--PRINT top line relative to string length + 2 '+'
--PRINT top padding relative to string length + 2 '-'
--PRINT center w/ string input + 2 spaces
--PRINT bottom padding relative to string length + 2 '-'
--PRINT bottom line relative to string length + 2 '+'
-
-Code:
+ALGORITHM:
+  - Initialize string for top/bottom of box
+  - Initialize string for top/bottom of padding
+  - Initialize string with string interpolated within side padding
 =end
 
-def top_bottom_lines(string)
-  "+#{'-' * (string.length + 2)}+"
-end
-
-def top_bottom_padding(string)
-  "|#{' ' * (string.length + 2)}|"
-end
-
-def center_message(string)
-  puts("| #{string} |")
-end
-
 def print_in_box(string)
-  puts top_bottom_lines(string)
-  puts top_bottom_padding(string)
-  center_message(string)
-  puts top_bottom_padding(string)
-  puts top_bottom_lines(string)
+  puts edges(string)
+  puts padding(string)
+  puts message(string)
+  puts padding(string)
+  puts edges(string)
+end
+
+def edges(string)
+  "+-#{'-' * string.length}-+"
+end
+
+def padding(string)
+  "| #{' ' * string.length} |"
+end
+
+def message(string)
+  "| #{string} |"
 end
 
 print_in_box('To boldly go where no one has gone before.')

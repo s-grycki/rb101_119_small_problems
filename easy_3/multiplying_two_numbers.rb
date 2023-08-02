@@ -1,28 +1,21 @@
 =begin
-Problem: Get two arguments, multiply them together,
-and return the result
+  PROBLEM: Take two arguments with a method, multiply them, and return result
+  Input: two integers
+  Output: integer result
+  Rules:
+    - 
 
--Input: Two arguments
--Output: Two arguments multiplied
+  EXAMPLES:
+  multiply(5, 3) == 15
 
-Examples:
-multiply(5, 3) == 15
-"hi" * 2   # => "hihi"
-['hi', 'there'] * 2 => ["hi", "there", "hi", "there"]
-2 * ['hi', 'there'] => Error
+  DATA STRUCTURES:
 
-Algorithm:
-GET value 1
-GET value 2
-RETURN value1 * value2
-
-Code:
+  ALGORITHM:
+    - 
 =end
 
-def multiply(val1, val2)
-  val1 * val2
+def multiply(n1, n2)
+  n1 * n2
 end
 
-p multiply(5, 3) == 15
-p multiply('hi', 2) == 'hihi'
-p multiply(['hi', 'there'], 2) == %w[hi there hi there]
+p multiply(5, 3)

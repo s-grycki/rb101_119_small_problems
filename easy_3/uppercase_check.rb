@@ -1,37 +1,27 @@
 =begin
-Problem: Write a method that returns true if all the alphabetic 
-characters inside the string are uppercase, false otherwise
+  PROBLEM: Return true if all alphanumberics in string are uppercase, false otherwise
+  Input: String
+  Output: Boolean true/false
+  Rules:
+    - Ignore alphanumerics
 
--Input: String
--Output: True/false
+  EXAMPLES:
+  uppercase?('t') == false
+  uppercase?('T') == true
+  uppercase?('Four Score') == false
+  uppercase?('FOUR SCORE') == true
+  uppercase?('4SCORE!') == true
+  uppercase?('') == true
 
--Rules
--Ignore non-alphabetic characters
+  DATA STRUCTURES:
+ 
 
-Examples:
-uppercase?('t') == false
-uppercase?('T') == true
-uppercase?('Four Score') == false
-uppercase?('FOUR SCORE') == true
-uppercase?('4SCORE!') == true
-uppercase?('') == true
+  ALGORITHM:
 
-Data Structures:
-String
-
-Algorithm:
-GET string
-IF string.upcase == original string
-  RETURN TRUE
-ELSE
-  RETURN FALSE
-END IF
-
-Code:
 =end
 
 def uppercase?(string)
-  string == string.upcase
+  string.upcase == string
 end
 
 p uppercase?('t') == false

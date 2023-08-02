@@ -1,69 +1,66 @@
 =begin
-Problem: Build a program that asks a user for the length and width
-of a room in feet and then displays the results in
-square feet, square inches, and square centimeters.
-Assume all inputs are valid
+PROBLEM: Ask user for length and width of room in meters and display
+area of the room in square meters and square feet
+  - Input: Length and width of room
+  - Output: String with measurements interpolated
+  - Rules:
+    - Don't worry about input validation for this program
 
--Input: Integer/float
--Output: 3 integer/float values
-
--Rules
--Outputs rounded to 2 decimal points
-
-Examples:
-Enter the length of the room in feet:
+EXAMPLES:
+Enter the length of the room in meters:
 10
-Enter the width of the room in feet:
+Enter the width of the room in meters:
 7
-The area of the room is ___ square feet, ___ square inches, ___ square centimeters.
+The area of the room is 70.0 square meters (753.47 square feet).
 
-Data Structures:
-Float
+DATA STRUCTURE:
 
-Algorithm:
-SET SQFEET_TO_SQINCHES = 144
-SET SQINCHES_TO_SQCENTIMETERS = 6.4516
-GET length
-GET width
-SET square_feet = length * width
-SET square_inches = square_feet * SQFEET_TO_SQINCHES
-SET square_centimeters = square_inches * SQINCHES_TO_SQCENTIMETERS
-PRINT square_feet, square_inches, square_centimeters rounded(2)
+ALGORITHM:
+  - Initialize constant for meters to feet
+  - Get room length in meters
+  - Get room width in meters
+  - Calculate square meters and square centimeters
+  - Output string to user
 
-Code:
+  - Initialize constant for feet to inches
+  - Initialize constant for inches to centimeters
 =end
 
-SQFEET_TO_SQINCHES = 144
-SQINCHES_TO_SQCENTIMETERS = 6.4516
+METERS_TO_FEET = 10.7639
+FEET_TO_INCHES = 144
+INCHES_TO_CENTIMETERS = 6.4516
 
-def prompt(input)
-  puts(">> #{input}")
+def square_meters
+  puts '>> Enter the length of the room in meters:'
+  length = gets.chomp.to_f
+  puts '>> Enter the width of the room in meters:'
+  width = gets.chomp.to_f
+
+  meters = (length * width).round(2)
+  feet = format("%.2f", meters * METERS_TO_FEET)
+
+  puts "The area of the room is #{meters} square meters (#{feet} square feet)."
 end
 
-def values(string)
-  prompt("Enter the room #{string} in feet:")
-  gets.chomp.to_f
+
+def square_feet
+  puts '>> Enter the length of the room in feet:'
+  length = gets.chomp.to_f
+  puts '>> Enter the width of the room in feet:'
+  width = gets.chomp.to_f
+
+  feet = (length * width).round(2)
+  inches = (feet * FEET_TO_INCHES).round(2)
+  centimeters = format("%.2f", inches * INCHES_TO_CENTIMETERS)
+
+  puts "The area of the room is #{feet} square feet (#{inches} square inches " +
+  "and #{centimeters} square centimeters)."
 end
 
-def square_feet(length, width)
-  length * width
+puts "Would you like to calculate in feet or meters?"
+ans = gets.chomp.downcase
+if ans.start_with?('f')
+  square_feet
+elsif ans.start_with?('m')
+  square_meters
 end
-
-def square_inches(length, width)
-  square_feet(length, width) * SQFEET_TO_SQINCHES
-end
-
-def square_centimeters(length, width)
-  square_inches(length, width) * SQINCHES_TO_SQCENTIMETERS
-end
-
-length = values('length')
-width = values('width')
-
-s_feet = square_feet(length, width).round(2)
-s_inches = square_inches(length, width).round(2)
-s_centimeters = square_centimeters(length, width).round(2)
-
-prompt("The area of the room is #{s_feet} square feet.")
-prompt("#{s_inches} square inches.")
-prompt("#{s_centimeters} square centimeters.")

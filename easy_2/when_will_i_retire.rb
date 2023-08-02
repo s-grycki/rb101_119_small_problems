@@ -1,54 +1,37 @@
 =begin
-Problem: Build a program that displays when the user will retire,
-and how many years they have to work till retirement
+PROBLEM: Ask for user age and when they want to retire, then print out
+the year and the year when they will retire and how many years left
+  - Input: age as integer and age when wanting to retire
+  - Output: String messages with years and years left until retirement
+  - Rules:
+    - 
 
--Input: 2 Integers
--Output: 2 String messages
-
-Example:
+EXAMPLES:
 What is your age? 30
 At what age would you like to retire? 70
 
 It's 2016. You will retire in 2056.
 You have only 40 years of work to go!
 
-Data Structures:
-Integers
+DATA STRUCTURE:
 
-Algorithm:
-SET CURRENT YEAR = GET time.year
-GET current age
-GET retire age
-SET years left = retire age - current age
-PRINT It's (CURRENT YEAR). You will retire in (CURRENT YEAR + years left)
-PRINT You only have (years left) years of work to go!
+ALGORITHM:
+  - Get age from user
+  - Get age when wanting to retire from user
+  - Print current year and year of retirement
+  - Print how many years left until retirement
 
-Code:
 =end
 
-CURRENT_YEAR = Time.now.year
+YEAR = Time.now.year
 
-def prompt(input)
-  puts(">> #{input}")
-end
+print ">> What is your age? "
+age = gets.chomp.to_i
 
-def values(string)
-  prompt(string)
-  gets.chomp.to_i
-end
+print ">> At what age would you like to retire? "
+retire = gets.chomp.to_i
 
-def years_until_retirement(age, retire_age)
-  retire_age - age
-end
+years_left = retire - age
 
-def retire_year(years_left)
-  CURRENT_YEAR + years_left
-end
-
-age = values('What is your age?')
-retire_age = values('At what age would you like to retire?')
-
-years_left = years_until_retirement(age, retire_age)
-
-prompt("It's #{CURRENT_YEAR}. You will retire in #{retire_year(years_left)}.")
-prompt("You have only #{years_until_retirement(age, retire_age)} years of work to go!")
+puts ">> It's #{YEAR}. You will retire in #{YEAR + years_left}"
+puts ">> You only have #{years_left} years left until retirement!"

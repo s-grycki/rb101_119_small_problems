@@ -1,36 +1,28 @@
 =begin
-Problem: Write a method that takes two arguments, a positive integer and a boolean,
-and calculates the bonus for a given salary.
-If boolean is true, bonus is half salary amount. If boolean is false, bonus is 0
+PROBLEM: Return the bonus salary given a positive integer and a boolean. If true, return half of integer. Else, 0
+  - Input: Integer, boolean
+  - Output: Integer
+  - Rules:
+    - Return half integer if true
+    - Return 0 if false
 
--Input: Integer, boolean
--Output: Integer
+EXAMPLES:
+  puts calculate_bonus(2800, true) == 1400
+  puts calculate_bonus(1000, false) == 0
+  puts calculate_bonus(50000, true) == 25000  
 
--Rules:
--Half salary bonus if true
--No bonus if false
+DATA STRUCTURE:
 
-Examples:
-puts calculate_bonus(2800, true) == 1400
-puts calculate_bonus(1000, false) == 0
-puts calculate_bonus(50000, true) == 25000
+ALGORITHM:
+  - If true
+    - return integer / 2
+  - Else
+    - return 0
 
-Data Structures:
--Integer
-
-Algorithm:
-GET salary and boolean
-IF boolean == true
-		RETURN salary / 2
-ELSE
-  RETURN 0
-END IF
-
-Code:
 =end
 
-def calculate_bonus(salary, boolean)
-  boolean ? (salary / 2) : 0
+def calculate_bonus(int, boolean)
+  boolean == true ? int / 2 : 0
 end
 
 puts calculate_bonus(2800, true) == 1400

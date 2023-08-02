@@ -1,53 +1,28 @@
 =begin
-Problem: Create a simple mad-lib program that prompts for: 
-a noun, a verb, an adverb, and an adjective 
-and injects those into a story that you create.
+PROBLEM: Get a noun, a verb, an adverb, and an adjective and create a madlib
+  - Input: 4 strings
+  - Output: A new string with inputs inserted
+  - Rules:
+    - 
+EXAMPLES:
+  
+DATA STRUCTURE:
+  - Hash
 
--Input: 4 string words
--Output: Longer story string
+ALGORITHM:
+  - Ask user for the 4 inputs
+  - Capture the inputs in a variable
+  - Return the string
 
-Examples:
-Enter a noun: dog
-Enter a verb: walk
-Enter an adjective: blue
-Enter an adverb: quickly
-
-Do you walk your blue dog quickly? That's hilarious!
-
-Data Structures:
-String
-
-Algorithm:
-LOOP
-  GET string input 4x times
-  IF input is a non-empty string
-    BREAK word
-  ELSE
-    PRINT enter valid word
-		END IF
-END LOOP
-Join values into strings
-PRINT new string
-
-Code:
 =end
 
-def word_setter(type)
-  loop do
-    print "Enter a #{type}: "
-    word = gets.chomp
-    break word unless word.empty? || word.class != String
-    puts "Please enter a word"
-  end
+answer_hash = { noun: '', verb: '', adverb: '', adjective: '' }
+
+answer_hash.each do |type, input|
+  print ">> Enter a #{type}: "
+  input = gets.chomp
+  answer_hash[type] = input
 end
 
-noun = word_setter('noun')
-verb = word_setter('verb')
-adjective = word_setter('adjective')
-adverb = word_setter('adverb')
-
-sentence_1 = "Do you #{verb} your #{adjective} #{noun} #{adverb}? That's hilarious!"
-sentence_2 = "The #{adjective} #{noun} #{verb}s #{adverb} over the lazy dog."
-sentence_3 = "The #{noun} #{adverb} #{verb}s up #{adjective} Joe's turtle."
-
-puts [sentence_1, sentence_2, sentence_3].sample
+puts "Do you #{answer_hash[:verb]} your #{answer_hash[:adjective]}"  +
+" #{answer_hash[:noun]} #{answer_hash[:adverb]}? That's hilarious!"

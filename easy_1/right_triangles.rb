@@ -1,11 +1,14 @@
 =begin
-Problem: Write a method that takes integer n as an argument,
-and displays a right triangle whose base has n stars.
-The hypotenuse of the triangle should have options to
-display at any corner of the screen
+PROBLEM: Display a right triangle of stars with length and size based on a
+given integer. Allow the triangle to start in any corner
+  - Input: Integer, String represeting corner start
+  - Output: Rows of stars from 0 to integer
+  - Rules:
+    - Top line should be empty
+    - Allow stars to begin printing from any corner
 
-Examples:
-triangle(5, NE)
+EXAMPLES:
+triangle(5)
 
     *
    **
@@ -13,62 +16,71 @@ triangle(5, NE)
  ****
 *****
 
-triangle(9, NE)
+DATA STRUCTURE:
 
-        *
-       **
-      ***
-     ****
-    *****
-   ******
-  *******
- ********
-*********
 
-Data Structures:
+ALGORITHM:
+  - when top right 
+    - Iterate from 0 to the given integer
+      - output spaces * (integer - counter)
+      - output spaces * (integer - counter) + (stars * counter)
 
-Algorithm:
-GET integer & position
-CASE position
-  WHEN NW
-		  PRINT NW Triangle
-		WHEN SW
-		  PRINT SW Triangle
-		WHEN NE
-		  PRINT NE Triangle
-		WHEN SE
-		  PRINT SE Triangle
-END CASE
+  - when top left
+    - Iterate from 0 to the given integer
+      - output stars
 
-Code:
+  - when bottom right
+    - output spaces * counter
+    - output stars * (integer - counter)
+
+  - when bottom left
+    - output stars * (integer - counter)
+    - output spaces * counter 
 =end
 
-def normal(int)
-  int.times { |i| puts ('*' * i) + '*' }
-end
 
-def upside_down(int)
-  int.times { |i| puts '*' * (int - i) }
-end
 
-def mirrored(int)
-  int.times { |i| puts (' ' * ((int - 1) - i) + ('*' * i) + '*') }
-end
-
-def upside_down_mirrored(int)
-  int.times { |i| puts (' ' * i) + ('*' * (int - i)) }
-end
-
-def triangle(int, position = 'NW')
-  case position
-    when 'NW' then normal(int)
-    when 'SW' then upside_down(int)
-    when 'NE' then mirrored(int)
-    when 'SE' then upside_down_mirrored(int)
+def triangle(int, corner = 'tr')
+  case corner
+  when 'tr' then top_right(int)
+  when 'tl' then top_left(int)
+  when 'br' then bottom_right(int)
+  when 'bl' then bottom_left(int)
   end
 end
 
-triangle(9)
-triangle(9, 'SW')
-triangle(9, 'NE')
-triangle(9, 'SE')
+def top_right(int)
+  0.upto(int) do |i|
+    spaces = ' ' * (int - i)
+    stars = '*' * i
+    puts spaces + stars
+  end
+end
+
+def top_left(int)
+  0.upto(int) do |i|
+    stars = '*' * i
+    puts stars
+  end
+end
+
+def bottom_right(int)
+  0.upto(int) do |i|
+    spaces = ' ' * i
+    stars = '*' * (int - i)
+    puts spaces + stars
+  end
+end
+
+def bottom_left(int)
+  0.upto(int) do |i|
+    spaces = ' ' * i
+    stars = '*' * (int - i)
+    puts stars + spaces
+  end
+end
+
+triangle(5)
+triangle(5, 'tl')
+triangle(5, 'br')
+triangle(5, 'bl')

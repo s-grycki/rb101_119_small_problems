@@ -1,34 +1,31 @@
 =begin
-Problem: Use the multiply method from multiplying_two_numbers.
-Write a method that computes the power of its argument.
+  PROBLEM: Use the multiply method and write another method that squares
+  its argument
+  Input: Integer
+  Output: Input squared
+  Rules:
+    - Use multiply method
 
--Input: Two integers
--Ouput: First number raised to second number
+  EXAMPLES:
+  square(5) == 25
+  square(-8) == 64
 
-Examples:
-power_of_n(5, 3) # => 125
-power_of_n(-8, 5) # => -32768
-power_of_n(10, -1) # => 1/10
-power_of_n(10) # => 10
+  DATA STRUCTURES:
 
-Algorithm:
-GET int1
-GET int2
-RETURN int1 ** int2
-
+  ALGORITHM:
+    -  
 =end
 
-# Integer method that returns number raised to a power
-def multiply(num, n_times)
-  num.pow(n_times)
+def multiply(n1, n2)
+  n1 ** n2
 end
 
-# Creates counter with default of 1
-def power_of_n(num, n_times = 1)
-  multiply(num, n_times)
+def square(int, pwr = 2)
+  multiply(int, pwr)
 end
 
-p power_of_n(5, 3) # => 125
-p power_of_n(-8, 5) # => -32768
-p power_of_n(10, -1) # => 1/10
-p power_of_n(10) # => 10
+p square(-8)
+p square(-2, 3)
+p square(-2, 4)
+
+# Modified multiply to allow for any nth power

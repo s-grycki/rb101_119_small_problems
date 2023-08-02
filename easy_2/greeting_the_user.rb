@@ -1,47 +1,35 @@
 =begin
-Problem: Ask for user name. The program will then greet the user.
-If the user writes "name" then the computer yells back
+PROBLEM: Ask user for their name. Greet them. If they end with an "!"
+then ask why they're screaming
 
--Input: String
--Output: String message
+  - Input: Name as string 
+  - Output: greeting as string
+  - Rules:
+    - 
 
-Examples:
+EXAMPLES:
 What is your name? Bob
 Hello Bob.
 
 What is your name? Bob!
 HELLO BOB. WHY ARE WE SCREAMING?
 
-Data Structures:
--String
+DATA STRUCTURE:
 
-Algorithm:
-GET name
-IF final character == "!"
-  name = (name - "!").uppercase
-  PRINT "Hello (name). Why are we screaming?".uppercase
-ELSE
-  PRINT Hello (name).
-END IF
+ALGORITHM:
+  - Get name from the user
+  - If name ends with !
+    - Ask why we're screaming
+  - else
+    - Greet user
 
-Code:
 =end
 
-def prompt(input)
-  puts(">> #{input}")
+print ">> What is your name? "
+name = gets.chomp
+
+if name.end_with?('!')
+  puts "HELLO #{name[..-2].upcase}. WHY ARE WE SCREAMING?"
+else
+  puts "Hello #{name}."
 end
-
-def greeter(name)
-  name.chomp!
-  if name[-1] == '!'
-    name.chop!.upcase!
-    prompt("Hello #{name}. Why are we screaming?".upcase)
-  else
-    prompt("Hello #{name}.")
-  end
-end
-
-prompt('What is your name?')
-name = gets
-
-greeter(name)

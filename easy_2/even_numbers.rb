@@ -1,22 +1,22 @@
 =begin
-Problem: Print all even numbers from 1 to 99.
-Each number should be on a seperate line
+PROBLEM: Print all even numbers from 1..99 with each on a seperate line
 
-Input: Range
-Output: Integers
+  - Input: Range (1..99)
+  - Output: even numbers on seperate lines
+  - Rules:
+    - 
 
-Data Strucutres:
+EXAMPLES:
+
+DATA STRUCTURE:
 Range, Array
 
-Algorithm:
-FOR each val IN (1..99)
-  IF val.even?
-    PRINT val
-  END IF
-END FOR
-
-Code:
+ALGORITHM:
+  - Iterate through array(1..99)
+    - If array value is even
+      - output value
 
 =end
 
-(1..99).to_a.select { |int| puts int if int.even? }
+Array(1..99).each { |int| puts int if int.even? }
+1.upto(99) { |int| puts int if int.even? }

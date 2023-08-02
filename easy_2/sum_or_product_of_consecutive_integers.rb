@@ -1,87 +1,45 @@
 =begin
-Problem: Ask the user for an integer greater than 0,
-then ask if user wants to determine sum or product of
-numbers between 1 and entered integer
+PROBLEM: Ask user for integer greater than 0, then ask if they want to
+determine sum or product of numbers between 1 and given integer
 
--Input: Integer greater than 0
--Output: String with final value
+  - Input: Integer greater than 0
+  - Output: Sum or product of all numbers between 1 and input
+  - Rules:
+    - 
 
--Rules:
--Inputs must be greater than 0
--Operations should be performed on every number beyond input
+EXAMPLES:
 
-Examples:
->> Please enter an integer greater than 0:
-5
->> Enter 's' to compute the sum, 'p' to compute the product.
-s
-The sum of the integers between 1 and 5 is 15.
+DATA STRUCTURE:
+Range, Array
 
+ALGORITHM:
+  - Ask user for integer input
+  - Set input to absolute value
+  - Initialize array of values (1..input)
 
->> Please enter an integer greater than 0:
-6
->> Enter 's' to compute the sum, 'p' to compute the product.
-p
-The product of the integers between 1 and 6 is 720.
+  - Ask user if they want sum or product
 
-Data Structures:
--Integer, Range, Array
+  - If product
+    - multiply every value in the array and output value
 
-Algorithm:
-GET number > 0
-SET total = 0
-RETURN error IF number is 0 OR negative
-PRINT Enter s for sum. Enter p for product
-RETURN error IF input != s OR p
-IF input == 's'
-  FOR each val IN (1..number)
-    total += val
-  END LOOP
-ELSE
-  FOR each val IN (1..number)
-    total *= val
-  END LOOP
-END IF
-
-PRINT sum of integers between 1 and (number) is (total) IF input == 's'
-PRINT product of integers between 1 and (number) is (total) IF input == 'p'
-
-Code:
+  - If sum
+    - add every value in the array and output value
 =end
 
-def prompt(input)
-  puts(">> #{input}")
+int = loop do
+  puts ">> Please enter an integer greater than 0:"
+  int = gets.chomp.to_i.abs
+  break int if int > 0
 end
 
-def check_int
-  loop do
-    prompt('Please enter an integer greater than 0:')
-    int = gets.chomp.to_i
-    int.positive? ? (break int) : next
-  end
+values = Array(1..int)
+
+puts ">> Do you want a sum or a product?"
+final_value = loop do
+  ans = gets.chomp.downcase
+  break values.inject(:+) if %w(s sum).include?(ans)
+  break values.inject(:*) if %w(p product).include?(ans)
+  puts ">> Please select sum or product"
 end
 
-def prompt_command
-  prompt("Enter 's' to compute the sum, 'p' to compute the product.")
-  gets.chomp.downcase
-end
-
-def sum(int)
-  (1..int).to_a.inject(:+)
-end
-
-def product(int)
-  (1..int).to_a.inject(:*)
-end
-
-def sum_or_product(int)
-  loop do
-    ans = prompt_command
-    (break prompt("The sum of the integers between 1 and #{int} is #{sum(int)}") if ans.start_with?('s'))
-    (break prompt("The product of the integers between 1 and #{int} is #{product(int)}") if ans.start_with?('p'))
-    prompt('Invalid input. Please try again')
-  end
-end
-
-int = check_int
-sum_or_product(int)
+puts ">> The product of the integers between 1 and #{int} is #{final_value}."

@@ -1,61 +1,49 @@
 =begin
-Problem: Create a tip calculator that prompts for bill amount and tip rate.
-The program should compute the tip and then
-display both the tip and the total amount of the bill.
-Format the results so it always prints with 2 decimal places
+PROBLEM: Ask for bill amount and tip rate. Display tip and total with tip
+  - Input: dollar amount
+  - Output: tip amount and total
+  - Rules:
+    - Ignore first character if user inputs $
 
--Input: Two integers/floats
--Output: Two string messages
-
--Rules:
--Make sure output always shows 2 decimals
-
--Example:
+EXAMPLES:
 What is the bill? 200
 What is the tip percentage? 15
 
-The tip is $30.00
-The total is $230.00
+The tip is $30.0
+The total is $230.0
 
--Data Structures:
--Floats
+DATA STRUCTURE:
 
--Algorithm:
-SET TIP_CONVERSION = 0.01
-GET amount
-GET tip percentage
-SET tip_total =  ((tip percentage * TIP_CONVERSION) * total)
-SET total = tip_total + amount
-PRINT the tip is (tip_total) formated to 2 places
-PRINT the total is (total) formated to 2 places
+ALGORITHM:
+  - Ask user for bill
+  - Ask for tip percentage
 
--Code:
+  - If bill starts with $
+    - delete the character
+
+  - If tip ends with %
+    - delete the character
+
+  - calculate tip as bill * (tip / 100)
+  - calculate total as tip + bill
+
+  - Display tip
+  - Display total
+
 =end
 
-TIP_CONVERSION = 0.01
+puts ">> What is the bill?"
+bill = gets.chomp
+bill.slice!(0) if bill.start_with?('$')
+bill = bill.to_f
 
-def prompt(input)
-  puts(">> #{input}")
-end
+puts ">> What is the tip percentage?"
+tip = gets.chomp
+tip.slice!(-1) if tip.end_with?('%')
+tip = tip.to_f
 
-def values(string)
-  prompt(string)
-  gets.chomp.to_f
-end
+tip = bill * (tip / 100)
+total = tip + bill
 
-def calculate_tip(amount, tip)
-  (amount * (tip * TIP_CONVERSION))
-end
-
-def calculate_total(amount, tip)
-  calculate_tip(amount, tip) + amount
-end
-
-amount = values('Enter the bill amount (in $)')
-tip = values('Enter the tip percentage')
-
-tip_total = calculate_tip(amount, tip)
-total = calculate_total(amount, tip)
-
-prompt("The tip is $#{format('%.2f', tip_total)}")
-prompt("The total is $#{format('%.2f', total)}")
+puts ">> The tip is #{format("$%.2f",tip)}"
+puts ">> The total is #{format("$%.2f", total)}"
